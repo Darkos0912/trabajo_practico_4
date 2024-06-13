@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale-1">
+	<link data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<link href="/css/estilos.css" rel="stylesheet">
+	<title>Titulo</title>
+</head>
+<body>
+
+	<header data-th-replace="~{/layouts/header :: header}"></header>
+
+	<main class="container">
+		<h1> Lista de Carreras</h1>
+		<table class="table table-striped">
+			<thead>
+    			<tr>
+      				<th scope="col">Codigo</th>
+      				<th scope="col">Nombre</th>
+      				<th scope="col">Cantidad de años</th>
+      				<th scope="col">Estado</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+    			<tr data-th-each="carrera : ${listadoCarreras}">
+      				<th th-text="${carrera.codigo}"></th>
+      				<td th-text="${carrera.nombre}"></td>
+      				<td th-text="${carrera.cant}"></td>
+      				<td th-text="${carrera.estado}"></td>
+      				<td>
+      					<a data-th-href="@{'/eliminar/'+${carrera.codigo}}" class="btn btn-danger"> Elimnar </a>
+      					<a data-th-href="@{'/modificar/'+${carrera.codigo}}" class="btn btn-warning"> Modificar </a>
+      				</td>
+    			</tr>
+    		</tbody>
+		</table>
+	</main>
+	
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+	<script type="text/javascript" data-th-src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

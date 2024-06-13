@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale-1">
+	<link data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<title>Titulo</title>
+</head>
+<body>
+	<header data-th-fragment="header" class="hd justify-content-center">
+		<div class="row st-nav">
+			<div class="col">
+				<img src="/img/logo-fi.png" alt="LogoFI" width="150px" height="100px">
+			</div>
+		
+			<nav class="nav col justify-content-right align-items-center">
+				<a class="nav-link" href="">Inicio</a>
+				<a class="nav-link" href="">Acerca de</a>
+				<a class="nav-link" href="">Carreras</a>
+				<a class="nav-link" href="">Noticias</a>
+				<a class="nav-link" href="">Contacto</a>
+			</nav>
+		</div>		
+		<h1 class="tit-1"> Facultad de Ingeniería </h1>
+		<strong class="strong"> "Siendo proactivos, responsables de nuestro propio destino" </strong>
+	</header>
+	
+	<script type="text/javascript" data-th-src="@{/webjars/bootstrap/js/bootstrap.bundle.js}"></script>
+</body>
+</html>
