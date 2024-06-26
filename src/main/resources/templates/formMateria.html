@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale-1">
+	<link data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<title>Formulario</title>
 </head>
 <body>
 
+	<header data-th-replace="~{/layouts/header :: header}"></header>
+	
+	<main class="container">
+		<h1> FORMULARIO Materia</h1>
+		<form data-th-action="${flag}?@{materia/modificarMateria}:@{/materia/guardarMateria}" data-th-object="${nuevaMateria}" method="post">
+			<div class="mb-3 col-sm-6">
+    			<label for="codigo" class="form-label">Código</label>
+    			<input type="text" class="form-control" id="codigo" data-th-field="*{codigo}" data-th-readonly=${flag}>
+  			</div>
+  			<div class="mb-3 col-sm-6">
+    			<label for="nombre" class="form-label">Nombre</label>
+    			<input type="text" class="form-control" id="nombre" data-th-field="*{nombre}">
+  			</div>
+  			<div class="mb-3 col-sm-6">
+    			<label for="curso" class="form-label">Curso</label>
+    			<input type="number" class="form-control" id="curso" data-th-field="*{curso}">
+  			</div>
+  			<div class="mb-3 col-sm-6">
+    			<label for="cantidadHoras" class="form-label">Cantidad de horas</label>
+    			<input type="number" class="form-control" id="cantidadHoras" data-th-field="*{cantidadHoras}">
+  			</div>
+  			<div class="mb-3 col-sm-6">
+    			<label for="modalidad" class="form-label">Modalidad</label>
+    			<input type="text" class="form-control" id="modalidad" data-th-field="*{modalidad}">
+  			</div>
+  			<div class="mb-3 col-sm-6">
+    			<label for="docente" class="form-label">Docente</label>
+    			<input type="text" class="form-control" id="docente" data-th-field="*{docente}">
+  			</div>
+  			<div class="mb-3 col-sm-6">
+    			<label for="carrera" class="form-label">Carrera</label>
+    			<input type="text" class="form-control" id="carrera" data-th-field="*{carrera}">
+  			</div>
+  			<button type="submit" class="btn btn-primary">Guardar</button>
+		</form>
+	</main>
+	
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+	
+	<script type="text/javascript" data-th-src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

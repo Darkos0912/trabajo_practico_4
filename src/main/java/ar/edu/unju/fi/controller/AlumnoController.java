@@ -17,7 +17,7 @@ import ar.edu.unju.fi.model.Alumno;
 public class AlumnoController {
 	
 	@Autowired
-	private Alumno nuevoAlumno;
+	Alumno nuevoAlumno = new Alumno();
 	
 	@GetMapping("/lista")
 	public ModelAndView getListaAlumnos() {
@@ -27,16 +27,15 @@ public class AlumnoController {
 		return modelView;
 	}
 	
-	@GetMapping("/formulario")
+	@GetMapping("/formularioAlumno")
 	public ModelAndView getFormAlumno() {
-		nuevoAlumno = new Alumno();
 		ModelAndView modelView = new ModelAndView("formAlumno");
 		modelView.addObject("nuevoAlumno", nuevoAlumno);
 		
 		return modelView;
 	}
 	
-	@PostMapping("/guardar")
+	@PostMapping("/guardarAlumno")
 	public ModelAndView saveAlumno(@ModelAttribute("nuevoAlumno") Alumno alumnos) {
 		ListadoAlumno.agregarAlumno(alumnos);
 		
@@ -46,14 +45,30 @@ public class AlumnoController {
 		return modelView;
 	}
 	
-	@GetMapping("/modificar")
-	public ModelAndView modificarAlumno() {
+	@GetMapping("modificarAlumno/{lu}")
+	public ModelAndView modificarAlumno(@PathVariable(name="lu") String lu) {
+		Alumno alumno = ListadoAlumno.buscarAlumnoPorLu(lu);
 		
+		ModelAndView modelView = new ModelAndView("formAlumno");
+		
+		modelView.addObject("nuevoAlumno", alumno);
+		modelView.addObject("flag", true);
+		return modelView;
 	}
 	
-	@GetMapping("/eliminar/{dni}")
-	public ModelAndView eliminarAlumno(@PathVariable(name="dni") int dni) {
-		ListadoAlumno.eliminarAlumno(dni);
+	@PostMapping("/modificarAlumno")
+	public ModelAndView modificarAlumno(@ModelAttribute("nuevoAlumno") Alumno alumnoAModificar) {
+		ListadoAlumno.modificarAlumno(alumnoAModificar);
+		
+		ModelAndView modelView = new ModelAndView("listaDeAlumnos");
+		modelView.addObject("listadoAlumnos", ListadoAlumno.listarAlumnos());
+		
+		return modelView;
+	}
+	
+	@GetMapping("/eliminarAlumno/{lu}")
+	public ModelAndView eliminarAlumno(@PathVariable(name="lu") String lu) {
+		ListadoAlumno.eliminarAlumno(lu);
 		
 		ModelAndView modelView = new ModelAndView("listaDeAlumnos");
 		modelView.addObject("listadoAlumnos", ListadoAlumno.listarAlumnos());

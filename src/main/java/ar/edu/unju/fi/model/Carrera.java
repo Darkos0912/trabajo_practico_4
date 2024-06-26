@@ -6,17 +6,17 @@ import org.springframework.stereotype.Component;
 public class Carrera {
 	private String codigo;
 	private String nombre;
-	private Integer cantidadAños;
+	private Integer cantidadAnios;
 	private Boolean estado;
 	
 	public Carrera() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Carrera(String codigo, String nombre, int cantidadAños, Boolean estado) {
+	public Carrera(String codigo, String nombre, Integer cantidadAnios, Boolean estado) {
 		this.codigo = codigo;
 		this.nombre = nombre;
-		this.cantidadAños = cantidadAños;
+		this.cantidadAnios = cantidadAnios;
 		this.estado = estado;
 	}
 
@@ -36,12 +36,12 @@ public class Carrera {
 		this.nombre = nombre;
 	}
 
-	public Integer getCantidadAños() {
-		return cantidadAños;
+	public Integer getCantidadAnios() {
+		return cantidadAnios;
 	}
 
-	public void setCantidadAños(Integer cantidadAños) {
-		this.cantidadAños = cantidadAños;
+	public void setCantidadAños(Integer cantidadAnios) {
+		this.cantidadAnios = cantidadAnios;
 	}
 
 	public Boolean getEstado() {
@@ -51,13 +51,5 @@ public class Carrera {
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
-
-	@Override
-	public String toString() {
-		return "Carrera [codigo=" + codigo + ", nombre=" + nombre + ", cantidadAños=" + cantidadAños + ", estado="
-				+ estado + "]";
-	}
-	
-	
 	
 }

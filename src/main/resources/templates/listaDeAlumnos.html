@@ -12,7 +12,7 @@
 	<header data-th-replace="~{/layouts/header :: header}"></header>
 
 	<main class="container">
-		<h1> Lista de Carreras</h1>
+		<h1> Lista de Alumnos</h1>
 		<table class="table table-striped">
 			<thead>
     			<tr>
@@ -25,6 +25,7 @@
       				<th scope="col">Apellido</th>
       				<th scope="col">Domicilio</th>
       				<th scope="col">Libreta Universitaria (LU)</th>
+      				<th scope="col">Estado</th>
     			</tr>
   			</thead>
   			<tbody>
@@ -32,15 +33,15 @@
       				<th data-th-text="${a.dni}"></th>
       				<td data-th-text="${a.nombre}"></td>
       				<td data-th-text="${a.apellido}"></td>
-      				<td data-th-text="${a.}"></td>
       				<td data-th-text="${a.email}"></td>
       				<td data-th-text="${a.telefono}"></td>
-      				<td data-th-text="${a.nacimiento}"></td>
-      				<td data-th-text="${carrera.domicilio}"></td>
-      				<td data-th-text="${carrera.lu}"></td>
+      				<td data-th-text="${a.fechaNacimiento}"></td>
+      				<td data-th-text="${a.domicilio}"></td>
+      				<td data-th-text="${a.lu}"></td>
+      				<td data-th-text="${a.estado}"></td>
       				<td>
-      					<a data-th-href="@{'/borrarCarrera/'+${carrera.codigo}}" class="btn btn-danger"> Borrar </a>
-      					<a data-th-href="@{'/modificarCarrera/'+${carrera.codigo}}" class="btn btn-warning"> Modificar </a>
+      					<a data-th-href="@{'/eliminarAlumno/'+${a.lu}}" class="btn btn-danger"> Borrar </a>
+      					<a data-th-href="@{'/modificarAlumno/'+${a.lu}}" class="btn btn-warning"> Modificar </a>
       				</td>
     			</tr>
     		</tbody>

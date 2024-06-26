@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale-1">
+	<link data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<link href="/css/estilos.css" rel="stylesheet">
+	<title>Titulo</title>
 </head>
 <body>
+	
+	<header data-th-replace="~{/layouts/header :: header}"></header>
 
+	<main class="container">
+		<h1> Lista de Materia</h1>
+		<table class="table table-striped">
+			<thead>
+    			<tr>
+      				<th scope="col">Codigo</th>
+      				<th scope="col">Nombre</th>
+      				<th scope="col">Curso</th>
+      				<th scope="col">Cantidad de horas</th>
+      				<th scope="col">Modalidad</th>
+      				<th scope="col">Docente</th>
+      				<th scope="col">Carrera</th>
+      				<th scope="col">Estado</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+    			<tr data-th-each="m : ${listadoMaterias}">
+      				<th data-th-text="${m.codigo}"></th>
+      				<td data-th-text="${m.nombre}"></td>
+      				<td data-th-text="${m.curso}"></td>
+      				<td data-th-text="${m.cantidadHoras}"></td>
+      				<td data-th-text="${m.modalidad}"></td>
+      				<td data-th-text="${m.docente}"></td>
+      				<td data-th-text="${m.carrera}"></td>
+      				<td data-th-text="${m.estado}"></td>
+      				<td>
+      					<a data-th-href="@{'/eliminarMateria/'+${m.codigo}}" class="btn btn-danger"> Borrar </a>
+      					<a data-th-href="@{'/modificarMateria/'+${m.codigo}}" class="btn btn-warning"> Modificar </a>
+      				</td>
+    			</tr>
+    		</tbody>
+		</table>
+	</main>
+	
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+	
+	<script type="text/javascript" data-th-src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

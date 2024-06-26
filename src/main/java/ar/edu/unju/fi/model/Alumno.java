@@ -1,22 +1,26 @@
 package ar.edu.unju.fi.model;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Alumno {
-	private int dni;
+	private Integer dni;
 	private String nombre;
 	private String apellido;
 	private String email;
-	private int telefono;
-	private Calendar fechaNacimiento;
+	private Integer telefono;
+	private LocalDate fechaNacimiento;
 	private String domicilio;
 	private String lu;
+	private Boolean estado;
 	
 	public Alumno(){
 		// TODO Auto-generated constructor stub
 	}
 
-	public Alumno(int dni, String nombre, String apellido, String email, int telefono, Calendar fechaNacimiento,
+	public Alumno(Integer dni, String nombre, String apellido, String email, Integer telefono, LocalDate fechaNacimiento,
 			String domicilio, String lu) {
 		this.dni = dni;
 		this.nombre = nombre;
@@ -28,11 +32,11 @@ public class Alumno {
 		this.lu = lu;
 	}
 
-	public int getDni() {
+	public Integer getDni() {
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(Integer dni) {
 		this.dni = dni;
 	}
 
@@ -60,19 +64,19 @@ public class Alumno {
 		this.email = email;
 	}
 
-	public int getTelefono() {
+	public Integer getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(Integer telefono) {
 		this.telefono = telefono;
 	}
 
-	public Calendar getFechaNacimiento() {
+	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Calendar fechaNacimiento) {
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
@@ -91,7 +95,14 @@ public class Alumno {
 	public void setLu(String lu) {
 		this.lu = lu;
 	}
-	
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
 	
 	
 	

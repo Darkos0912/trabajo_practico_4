@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale-1">
+	<link data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<link href="/css/estilos.css" rel="stylesheet">
+	<title>Titulo</title>
 </head>
 <body>
+	<header data-th-replace="~{/layouts/header :: header}"></header>
 
+	<main class="container">
+		<h1> Lista de Docentes</h1>
+		<table class="table table-striped">
+			<thead>
+    			<tr>
+      				<th scope="col">Legajo</th>
+      				<th scope="col">Nombre</th>
+      				<th scope="col">Apellido</th>
+      				<th scope="col">Email</th>
+      				<th scope="col">Telefono</th>
+      				<th scope="col">Estado</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+    			<tr data-th-each="d : ${listadoDocentes}">
+      				<th data-th-text="${d.legajo}"></th>
+      				<td data-th-text="${d.nombre}"></td>
+      				<td data-th-text="${d.apellido}"></td>
+      				<td data-th-text="${d.email}"></td>
+      				<td data-th-text="${d.telefono}"></td>
+      				<td data-th-text="${d.estado}"></td>
+      				<td>
+      					<a data-th-href="@{'/eliminarDocente/'+${d.legajo}}" class="btn btn-danger"> Borrar </a>
+      					<a data-th-href="@{'/modificarDocente/'+${d.legajo}}" class="btn btn-warning"> Modificar </a>
+      				</td>
+    			</tr>
+    		</tbody>
+		</table>
+	</main>
+	
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+	
+	<script type="text/javascript" data-th-src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

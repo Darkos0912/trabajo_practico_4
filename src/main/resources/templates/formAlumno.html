@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale-1">
@@ -7,44 +7,49 @@
 <title>Formulario</title>
 </head>
 <body>
+
+	<header data-th-replace="~{/layouts/header :: header}"></header>
+	
 	<main class="container">
 		<h1> FORMULARIO ALUMNO</h1>
-		<form data-th-action="@{/alumno/guardar}" data-th-object="${nuevoAlumno}" method="post" enctype="multipart/form-data">
+		<form data-th-action="${flag}?@{alumno/modificarAlumno}:@{/alumno/guardarAlumno}" data-th-object="${nuevoAlumno}" method="post">
+			<div class="mb-3 col-sm-6">
+    			<label for="lu" class="form-label">Libreta Universitaria (LU)</label>
+    			<input type="text" class="form-control" id="lu" data-th-field="*{lu}" data-th-readonly=${flag}>
+  			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="dni" class="form-label">DNI</label>
-    			<input type="number" class="form-control" id="dni" data-th-field="${dni}">
+    			<input type="number" class="form-control" id="dni" data-th-field="*{dni}">
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="nombre" class="form-label">Nombre</label>
-    			<input type="text" class="form-control" id="nombre" data-th-field="${nombre}">
+    			<input type="text" class="form-control" id="nombre" data-th-field="*{nombre}">
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="apellido" class="form-label">Apellido</label>
-    			<input type="text" class="form-control" id="apellido" data-th-field="${apellido}">
+    			<input type="text" class="form-control" id="apellido" data-th-field="*{apellido}">
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="email" class="form-label">Email</label>
-    			<input type="email" class="form-control" id="email" data-th-field="${email}">
+    			<input type="email" class="form-control" id="email" data-th-field="*{email}">
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="telefono" class="form-label">Telefono</label>
-    			<input type="number" class="form-control" id="telefono" data-th-field="${telefono}">
+    			<input type="number" class="form-control" id="telefono" data-th-field="*{telefono}">
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="nacimiento" class="form-label">Fecha de nacimiento</label>
-    			<input type="date" class="form-control" id="nacimiento" data-th-field="${nacimiento}">
+    			<input type="date" class="form-control" id="nacimiento" data-th-field="*{fechaNacimiento}">
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="domicilio" class="form-label">Domicilio</label>
-    			<input type="text" class="form-control" id="domicilio" data-th-field="${domicilio}">
-  			</div>
-  			<div class="mb-3 col-sm-6">
-    			<label for="lu" class="form-label">Libreta Universitaria (LU)</label>
-    			<input type="text" class="form-control" id="lu" data-th-field="${lu}">
+    			<input type="text" class="form-control" id="domicilio" data-th-field="*{domicilio}">
   			</div>
   			<button type="submit" class="btn btn-primary">Guardar</button>
 		</form>
 	</main>
+	
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
 	
 	<script type="text/javascript" data-th-src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>

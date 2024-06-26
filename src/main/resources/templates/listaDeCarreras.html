@@ -24,13 +24,13 @@
   			</thead>
   			<tbody>
     			<tr data-th-each="carrera : ${listadoCarreras}">
-      				<th th-text="${carrera.codigo}"></th>
-      				<td th-text="${carrera.nombre}"></td>
-      				<td th-text="${carrera.cant}"></td>
-      				<td th-text="${carrera.estado}"></td>
+      				<th data-th-text="${carrera.codigo}"></th>
+      				<td data-th-text="${carrera.nombre}"></td>
+      				<td data-th-text="${carrera.cantidadAnios}"></td>
+      				<td data-th-text="${carrera.estado}"></td>
       				<td>
-      					<a data-th-href="@{'/eliminar/'+${carrera.codigo}}" class="btn btn-danger"> Elimnar </a>
-      					<a data-th-href="@{'/modificar/'+${carrera.codigo}}" class="btn btn-warning"> Modificar </a>
+      					<a data-th-href="@{'/eliminarCarrera/'+${carrera.codigo}}" class="btn btn-danger"> Elimnar </a>
+      					<a data-th-href="@{'/modificarCarrera/'+${carrera.codigo}}" class="btn btn-warning"> Modificar </a>
       				</td>
     			</tr>
     		</tbody>

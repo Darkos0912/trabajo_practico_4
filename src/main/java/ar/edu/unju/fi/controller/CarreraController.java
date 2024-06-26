@@ -18,9 +18,8 @@ public class CarreraController {
 	
 	
 	@Autowired
-	private Carrera nuevaCarrera;
+	Carrera nuevaCarrera = new Carrera();
 	
-	//Mostrar la vista listaDeCarreras, con el listado de las carreras.
 	@GetMapping("/lista")
 	public ModelAndView getListaCarreras() {
 		ModelAndView modelView = new ModelAndView("listaDeCarreras");
@@ -30,42 +29,51 @@ public class CarreraController {
 		
 	}
 	
-	//Mostrar la vista formCarrera, con el formulario para llenar la información de la nueva Carrera.
-	@GetMapping("/formulario")
+	
+	@GetMapping("/formularioCarrera")
 	public ModelAndView getFormCarrera() {
-		nuevaCarrera = new Carrera();
-		ModelAndView modelView = new ModelAndView("formCarrera"); //pasa por parametro el nombre del formulario
-		modelView.addObject("nuevaCarrera",nuevaCarrera); //Agregamos/Instanciamos una nueva carrera.
+		ModelAndView modelView = new ModelAndView("formCarrera");
+		modelView.addObject("nuevaCarrera",nuevaCarrera); 
 		
 		return modelView;
 		
 	}
 	
-	//Guardar la nueva Carrera, y mostrar la lista de carreras.
-	@PostMapping("/guardar")
+	@PostMapping("/guardarCarrera")
 	public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") Carrera carrera) {
-		//guardar la información que se envia a través del formulario.
 		ListadoCarreras.agregarCarrera(carrera);
 		
-		//mostrar el listado
-		ModelAndView modelView = new ModelAndView("listaDeCarreras"); //pasa por parametro el nombre del formulario		
-		modelView.addObject("listadoCarreras", ListadoCarreras.listarCarreras()); //Traemos el listado de las carreras.
+		ModelAndView modelView = new ModelAndView("listaDeCarreras");	
+		modelView.addObject("listadoCarreras", ListadoCarreras.listarCarreras()); 
 				
 		return modelView;
 	}
 	
-	@GetMapping("/modificar")
-	public ModelAndView modificarCarrera() {
+	@GetMapping("/modificarCarrera/{codigo}")
+	public ModelAndView modificarCarrera(@PathVariable(name="codigo") String codigo) {
+		Carrera carrera = ListadoCarreras.buscarCarreraPorCodigo(codigo);
 		
+		ModelAndView modelView = new ModelAndView("formCarrera");
+		modelView.addObject("nuevaCarrera", carrera);
+		modelView.addObject("flag", true);
+		
+		return modelView;
 	}
 	
-	// Después desarrollar esta función
-	@GetMapping("/eliminar/{codigo}")
+	@PostMapping("/modificarCarrera")
+	public ModelAndView modificarCarrera(@ModelAttribute("nuevaCarrera") Carrera carreraAModificar) {
+		ListadoCarreras.modificarCarrera(carreraAModificar);
+		
+		ModelAndView modelView = new ModelAndView("listaDeCarreras");
+		modelView.addObject("listadoCarrera", ListadoCarreras.listarCarreras());
+		
+		return modelView;
+	}
+	
+	@GetMapping("/eliminarCarrera/{codigo}")
 	public ModelAndView eliminarCarrera(@PathVariable(name="codigo") String codigo) {
-		//borrar
 		ListadoCarreras.eliminarCarrera(codigo);
 		
-		//mostrar el nuevo listado
 		ModelAndView modelView = new ModelAndView("listaDeCarreras");
 		modelView.addObject("listadoCarreras", ListadoCarreras.listarCarreras());
 		
